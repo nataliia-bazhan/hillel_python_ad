@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL shorten</title>
+</head>
+<body>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <h2>Login</h2>
+        {% if error %}
+        <p style="color:red;">{{error}}</p>
+        {% endif %}
+        <p>Username:<br>
+            <input type="text" name="username"></p>
+        <p>Password:<br>
+            <input type="password" name="password"></p>
+        <button type="submit"> Login </button>
+        <p class="message">Don't have an account? <a href="{% url 'auth:sign_up' %}">Sign Up</a></p>
+    </form>
+    <p><a href="{% url 'links:main' %}">Return to menu</a></p>
+</body>
