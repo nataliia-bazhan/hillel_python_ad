@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+<ol>
+    {% for object in object_list|dictsortreversed:"created_at" %}
+    <li style="font-size:20px"><a href="{% url 'post:post' object.id %}">{{ object.title }}</a></li>
+    by {{ object.get_author }} | {{ object.when_published }}
+    <hr/>
+    {% empty %}
+    No posts yet.
+    {% endfor %}
+</ol>
+{% endblock %}

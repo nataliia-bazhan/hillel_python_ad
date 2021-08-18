@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+<ol>
+    {% for object in object_list|dictsortreversed:"created_at" %}
+    <li style="font-size:20px"><a href="{% url 'post:post' object.id %}">{{ object.title }}</a></li>
+    <a href="{% url 'post:update_post' object.id %}"> Update </a> |
+    <a href="{% url 'post:delete_post' object.id %}"> Delete </a> |
+    {{ object.when_published }}
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    No posts yet.
+    {% endfor %}
+</ol>
+{% endblock %}
